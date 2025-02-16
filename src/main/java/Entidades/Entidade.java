@@ -26,6 +26,9 @@ public class Entidade {
     public String[] dialogue = new String[20]; 
     public int dialogueIndex = 0;
     boolean attacking = false;
+    public int currentTileX = worldX / 100;
+    public int currentTileY = worldY / 100;
+    public int currentTile;
 
     // SPRITES IMAGES
     public BufferedImage up1, up2, down1, down2, right1, right2, left1, left2;
@@ -46,7 +49,7 @@ public class Entidade {
     public Entidade(Janela j) {
         this.j = j;
     }
-
+    
     public void speak(){ 
         if(dialogue[dialogueIndex] == null){
             dialogueIndex = 0;
@@ -76,6 +79,7 @@ public class Entidade {
     public void setAction() { }
     public void update(){
 
+        currentTile = j.tm.mapTileNum[currentTileY][currentTileX];
         setAction();
 
         collisionOn = false;
@@ -107,6 +111,7 @@ public class Entidade {
                     worldX += speed;
                     break;
             }
+            currentTileX = worldX / j.tileSize;
         }
 
         spriteCounter++;

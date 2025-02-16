@@ -13,6 +13,7 @@ import Entidades.Entidade;
 import Entidades.Player;
 import Entidades.Tempestade;
 import Itens.Item;
+import Principal.RayCasting.DDARayCast;
 
 public class Janela extends JPanel implements Runnable {
     // CONFIG TELA DE TAMANHO 1024x576
@@ -36,7 +37,7 @@ public class Janela extends JPanel implements Runnable {
     public final int worldHeight = tileSize * maxWorldRow;
 
     // base do jogo
-    TileManager tm = new TileManager(this);
+    public TileManager tm = new TileManager(this);
     Audio audio = new Audio();
     Audio msc = new Audio();
     public CollisionChecker cChecker = new CollisionChecker(this);
@@ -44,7 +45,6 @@ public class Janela extends JPanel implements Runnable {
     public KeyHandler keyH = new KeyHandler(this);
     public EventHandler eHandler = new EventHandler(this);
     public DDARayCast rc = new DDARayCast(this);
-    public DDALine dl = new DDALine();
     public UI ui = new UI(this);
     Thread gameThread;
 
@@ -139,6 +139,8 @@ public class Janela extends JPanel implements Runnable {
     }
     
     public void update() {
+
+        Graphics2D g2d = (Graphics2D) getGraphics();
         if (gameState == playState) {
             //  PLAYER[playerIndex]
             player[playerIndex].update();
@@ -153,9 +155,8 @@ public class Janela extends JPanel implements Runnable {
                     inimigo[i].update();
                 }
             }
-        
-        if (gameState == pauseState) {
-            // pause
+            if (gameState == pauseState) {
+                // pause
         }
         
     }
@@ -171,12 +172,12 @@ public class Janela extends JPanel implements Runnable {
         if (gameState == titleState) {
             ui.draw(g2d);
         }
-
+        
         //OUTROS
         else {
              // TILE
            tm.draw(g2d);
-        
+
               // ITEM
             for(int i = 0; i<item.length; i++){
                 if(item[i] != null){
@@ -187,14 +188,14 @@ public class Janela extends JPanel implements Runnable {
             // NPC
             for(int i = 0; i < npc.length; i++){
                 if(npc[i] != null){
-                npc[i].draw(g2d);
+                    npc[i].draw(g2d);
+                    rc.rayCast(npc[i], g2d);
                 }
             }
-
+            
             for(int i = 0; i < inimigo.length; i++){
                 if(inimigo[i] != null){
-                inimigo[i].draw(g2d);
-                //rc.rayCast(inimigo[i], g2d);
+                    inimigo[i].draw(g2d);
             }
         }
         

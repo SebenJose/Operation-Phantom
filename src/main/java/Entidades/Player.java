@@ -149,6 +149,7 @@ public class Player extends Entidade {
                         worldX += speed;
                         break;
                 }
+                currentTileX = worldX / j.tileSize;
             }
             
 

@@ -31,7 +31,7 @@ public class CollisionChecker {
                 if (j.tm.tile[tileNum1].collision == true || j.tm.tile[tileNum2].collision == true) {
                     Entidades.collisionOn = true;
                 }
-
+                
                 break;
             case "down":
                 entityBottomRow = (entityBottomWorldY + Entidades.speed) / j.tileSize;
@@ -41,6 +41,7 @@ public class CollisionChecker {
                 if (j.tm.tile[tileNum1].collision == true || j.tm.tile[tileNum2].collision == true) {
                     Entidades.collisionOn = true;
                 }
+                Entidades.currentTile = tileNum1;   
 
                 break;
             case "left":
@@ -51,7 +52,7 @@ public class CollisionChecker {
                 if (j.tm.tile[tileNum1].collision == true || j.tm.tile[tileNum2].collision == true) {
                     Entidades.collisionOn = true;
                 }
-
+                Entidades.currentTile = tileNum1;
                 break;
             case "right":
                 entityRightCol = (entityRightWorldX + Entidades.speed) / j.tileSize;
@@ -61,7 +62,7 @@ public class CollisionChecker {
                 if (j.tm.tile[tileNum1].collision == true || j.tm.tile[tileNum2].collision == true) {
                     Entidades.collisionOn = true;
                 }
-
+                Entidades.currentTile = tileNum1;
                 break;
         }
     }
