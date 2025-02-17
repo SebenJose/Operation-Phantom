@@ -36,6 +36,7 @@ public class UI {
     public String  currentDialogue = "";
     public int comandNum = 0;
     public int titleScreenState = 0; 
+    public int pauseCounter = 0;
 
     public UI(Janela j) {
         this.j = j;
@@ -143,7 +144,28 @@ public class UI {
         }
         if(j.gameState == j.pauseState){
             drawVidaPlayer();
+         
             drawPauseScreen();
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 50));
+    
+            String text = "PAUSED";
+            g2.setColor(Color.WHITE);
+            int x = getXforCenteredText(text);
+            int y = j.screenHeight / 2;
+            
+            if(pauseCounter > 25){
+                if(pauseCounter > 50){
+                    pauseCounter = 0;
+                }
+                
+                pauseCounter++;
+            }
+            else{   
+                pauseCounter++;
+                g2.drawString(text, x, y);
+            }
+        
+            
         }
         if(j.gameState == j.dialogueState){
             drawVidaPlayer();
@@ -327,14 +349,33 @@ public class UI {
     }
 
     public void drawPauseScreen() {
-
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 50));
-        String text = "PAUSED";
-        int x = getXforCenteredText(text);
-
+        drawSubWindow(-100,-100, j.screenWidth+j.tileSize*2, j.screenHeight+j.tileSize*2);
+        
+        String text;
+        int x;
         int y = j.screenHeight / 2;
 
+        //g2.drawString(text, x, y);
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 36));
+        g2.setColor(Color.RED);
+        
+        text = "RESUME";
+        x = getXforCenteredText(text);
+        y += (int) (j.tileSize * 1.24);
         g2.drawString(text, x, y);
+        if (comandNum == 0) {
+            g2.drawString(">", x-j.tileSize, y);
+        }
+
+        text = "EXIT";
+        x = getXforCenteredText(text);
+        y += j.tileSize;
+        g2.drawString(text, x, y);
+        if (comandNum == 1) {
+            g2.drawString(">", x-j.tileSize, y);
+        }
+    
+
 
     }
 
