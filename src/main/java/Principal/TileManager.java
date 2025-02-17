@@ -7,8 +7,6 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
-
-
 public class TileManager {
     public Tiles tile[];
     Janela j;
@@ -25,7 +23,6 @@ public class TileManager {
     }
 
     public void getTileImage() {
-
         setup(0, "misc/grama_grid", false);
         setup(1, "chao/tile_aslfalto", false);
         setup(2, "chao/tile_azulejo", false);
@@ -39,18 +36,15 @@ public class TileManager {
         setup(10, "misc/tile_box", false);
         setup(11, "misc/tile_box2", false);
         setup(12, "Maquina_refri", true);
-        
-        
     }
 
     public void setup(int index, String imageName, boolean collision) {
-
         UtilityTool uTool = new UtilityTool();
 
-        try 
-        {
+        try {
             tile[index] = new Tiles();
-            tile[index].image = ImageIO.read(getClass().getResourceAsStream("/Principal/tilesSrc/"+imageName + ".png"));
+            tile[index].image = ImageIO
+                    .read(getClass().getResourceAsStream("/Principal/tilesSrc/" + imageName + ".png"));
             tile[index].image = uTool.scaleImage(tile[index].image, j.tileSize, j.tileSize);
             tile[index].collision = collision;
 
@@ -58,7 +52,6 @@ public class TileManager {
             System.err.println("Error loading tile image: " + e.getMessage());
         }
     }
-        
 
     public void loadMap(String path) {
         try {
