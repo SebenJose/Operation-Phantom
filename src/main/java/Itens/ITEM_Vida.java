@@ -7,7 +7,6 @@ public class ITEM_Vida extends Item {
     Janela j;
 
     public ITEM_Vida(Janela j) {
-        
         this.j = j;
 
         nome = "Vida";
@@ -21,6 +20,4 @@ public class ITEM_Vida extends Item {
         image8 = setup("/Principal/UIsrc/BarraVida/UI_vida_", j.tileSize, j.tileSize);
 
     }
-
-    
 }

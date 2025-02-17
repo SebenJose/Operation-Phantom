@@ -19,7 +19,6 @@ import Itens.ITEM_Vida;
 import Itens.Item;
 
 public class UI {
-
     BufferedImage backgroundTitleImage;
     BufferedImage backgroundCreditImage;
 
@@ -33,10 +32,14 @@ public class UI {
     public boolean gameFinished = false;
     public double playTime = 0;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
-    public String  currentDialogue = "";
+    public String currentDialogue = "";
     public int comandNum = 0;
+<<<<<<< HEAD
     public int titleScreenState = 0; 
     public int pauseCounter = 0;
+=======
+    public int titleScreenState = 0;
+>>>>>>> f1f1fc013af999f26e0e589145246cf2acc50225
 
     public UI(Janela j) {
         this.j = j;
@@ -45,8 +48,7 @@ public class UI {
             InputStream is = getClass().getResourceAsStream("/Principal/fontSrc/Retro Gaming.ttf");
             retroGaming = Font.createFont(Font.TRUETYPE_FONT, is);
 
-        }
-        catch (FontFormatException | IOException e) {
+        } catch (FontFormatException | IOException e) {
             System.out.println("Erro ao carregar fonte");
         }
 
@@ -54,15 +56,17 @@ public class UI {
         peDeCabraImage = peDeCabra.image;
 
         try {
-            backgroundTitleImage = ImageIO.read(new File("src/main/java/Principal/UISrc/TelasTitle/novaTelaLogginOP.png"));
+            backgroundTitleImage = ImageIO
+                    .read(new File("src/main/java/Principal/UISrc/TelasTitle/novaTelaLogginOP.png"));
         } catch (IOException e) {
-            e.printStackTrace();    
+            e.printStackTrace();
         }
 
         try {
-            backgroundCreditImage = ImageIO.read(new File("src/main/java/Principal/UISrc/TelasTitle/novaTelaCreditos.png"));
+            backgroundCreditImage = ImageIO
+                    .read(new File("src/main/java/Principal/UISrc/TelasTitle/novaTelaCreditos.png"));
         } catch (IOException e) {
-            e.printStackTrace();    
+            e.printStackTrace();
         }
 
         // HUD OBJECT
@@ -74,7 +78,10 @@ public class UI {
         vida_1 = vida.image5;
         vida_1_dano = vida.image6;
         vida_vazia = vida.image7;
+<<<<<<< HEAD
         vida_ = vida.image8;
+=======
+>>>>>>> f1f1fc013af999f26e0e589145246cf2acc50225
 
     }
 
@@ -90,15 +97,13 @@ public class UI {
         g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         g2.setColor(Color.WHITE);
 
-        //TITULO DO JOGO
-        if(j.gameState == j.titleState){
+        // TITULO DO JOGO
+        if (j.gameState == j.titleState) {
             drawTitleScreen();
         }
-        
-        
 
-        //ESTADO DO JOGO
-        if(j.gameState == j.playState){
+        // ESTADO DO JOGO
+        if (j.gameState == j.playState) {
             drawVidaPlayer();
             if (gameFinished) {
 
@@ -112,7 +117,7 @@ public class UI {
             } else {
 
                 if (j.player[j.playerIndex].hasPeDeCabra >= 1) {
-                    g2.drawImage(peDeCabraImage, j.tileSize*15, j.tileSize*8, j.tileSize, j.tileSize, null);
+                    g2.drawImage(peDeCabraImage, j.tileSize * 15, j.tileSize * 8, j.tileSize, j.tileSize, null);
                 }
 
                 g2.setFont(g2.getFont().deriveFont(Font.BOLD, 14));
@@ -142,7 +147,7 @@ public class UI {
                 }
             }
         }
-        if(j.gameState == j.pauseState){
+        if (j.gameState == j.pauseState) {
             drawVidaPlayer();
          
             drawPauseScreen();
@@ -167,37 +172,39 @@ public class UI {
         
             
         }
-        if(j.gameState == j.dialogueState){
+        if (j.gameState == j.dialogueState) {
             drawVidaPlayer();
             drawDialogueScreen();
         }
 
     }
 
-    public void drawVidaPlayer(){
+    public void drawVidaPlayer() {
+        int x = j.tileSize / 2;
+        int y = j.tileSize / 2;
 
+<<<<<<< HEAD
         int x = j.tileSize/2;
         int y = j.tileSize/2;
         int i = 0;
         
         g2.drawImage(vida_, x, y, j.tileSize, j.tileSize, null);
         if(j.player[j.playerIndex].life == j.player[j.playerIndex].maxLife){
+=======
+        if (j.player[j.playerIndex].life == j.player[j.playerIndex].maxLife) {
+>>>>>>> f1f1fc013af999f26e0e589145246cf2acc50225
             g2.drawImage(vida_cheia, x, y, j.tileSize, j.tileSize, null);
-        }
-        else if(j.player[j.playerIndex].life == 2){
+        } else if (j.player[j.playerIndex].life == 2) {
             g2.drawImage(vida_2, x, y, j.tileSize, j.tileSize, null);
-        }
-        else if(j.player[j.playerIndex].life == 1){
+        } else if (j.player[j.playerIndex].life == 1) {
             g2.drawImage(vida_1, x, y, j.tileSize, j.tileSize, null);
-        }
-        else if(j.player[j.playerIndex].life == 0){
+        } else if (j.player[j.playerIndex].life == 0) {
             g2.drawImage(vida_vazia, x, y, j.tileSize, j.tileSize, null);
         }
     }
 
     public void drawTitleScreen() {
-        
-        if(titleScreenState == 0 ){
+        if (titleScreenState == 0) {
 
             if (backgroundTitleImage != null) {
                 g2.drawImage(backgroundTitleImage, 0, 0, j.screenWidth, j.screenHeight, null);
@@ -211,36 +218,35 @@ public class UI {
             g2.setColor(Color.RED);
             g2.drawString(text, x, y);
 
-            //MENU
+            // MENU
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 25));
 
             text = "PLAY";
             x = getXforCenteredText(text);
-            y += j.tileSize *3;
+            y += j.tileSize * 3;
             g2.drawString(text, x, y);
             if (comandNum == 0) {
-            g2.drawString(">", x-j.tileSize, y);
-        }
+                g2.drawString(">", x - j.tileSize, y);
+            }
 
             text = "CREDITS";
             x = getXforCenteredText(text);
             y += j.tileSize;
             g2.drawString(text, x, y);
             if (comandNum == 1) {
-            g2.drawString(">", x-j.tileSize, y);
-        }
+                g2.drawString(">", x - j.tileSize, y);
+            }
 
             text = "EXIT";
             x = getXforCenteredText(text);
             y += j.tileSize;
             g2.drawString(text, x, y);
             if (comandNum == 2) {
-                g2.drawString(">", x-j.tileSize, y);
+                g2.drawString(">", x - j.tileSize, y);
             }
-        
-        }else if(titleScreenState == 1) {
-            
-            //SELECAO DE PERSONAGEM
+
+        } else if (titleScreenState == 1) {
+            // SELECAO DE PERSONAGEM
             g2.setColor(Color.RED);
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 30));
 
@@ -253,40 +259,39 @@ public class UI {
             x = getXforCenteredText(text);
             y = j.tileSize * 4;
             g2.drawString(text, x, y);
-            if(comandNum == 0){
-                g2.drawString(">", x-j.tileSize, y);
+            if (comandNum == 0) {
+                g2.drawString(">", x - j.tileSize, y);
             }
 
             text = "OSVALDO JR";
             x = getXforCenteredText(text);
             y = j.tileSize * 5;
             g2.drawString(text, x, y);
-            if(comandNum == 1){
-                g2.drawString(">", x-j.tileSize, y);
+            if (comandNum == 1) {
+                g2.drawString(">", x - j.tileSize, y);
             }
 
             text = "OSVALDO VALDO";
             x = getXforCenteredText(text);
             y = j.tileSize * 6;
             g2.drawString(text, x, y);
-            if(comandNum == 2){
-                g2.drawString(">", x-j.tileSize, y);
+            if (comandNum == 2) {
+                g2.drawString(">", x - j.tileSize, y);
             }
 
             text = "BACK";
             x = getXforCenteredText(text);
             y = j.tileSize * 8;
             g2.drawString(text, x, y);
-            if(comandNum == 3){
-                g2.drawString(">", x-j.tileSize, y);
+            if (comandNum == 3) {
+                g2.drawString(">", x - j.tileSize, y);
             }
-        } else if(titleScreenState == 2){
+        } else if (titleScreenState == 2) {
             drawCreditScreen();
         }
     }
 
     public void drawCreditScreen() {
-
         if (backgroundCreditImage != null) {
             g2.drawImage(backgroundCreditImage, 0, 0, j.screenWidth, j.screenHeight, null);
         }
@@ -320,39 +325,45 @@ public class UI {
         x = getXforCenteredText(text);
         y = j.tileSize * 8;
         g2.drawString(text, x, y);
-        if(comandNum == 1){
-        g2.drawString(">", x-j.tileSize, y);
+        if (comandNum == 1) {
+            g2.drawString(">", x - j.tileSize, y);
 
-        //IMPRIMINDO OS RA'S
-        g2.setColor(Color.WHITE);
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 12));
-        String controlText1 = "RA: 2651378";
-        x = getXforCenteredText(controlText1);
-        y = (int) (j.tileSize * 4.30);
-        g2.drawString(controlText1, x, y);
-        
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 12));
-        String controlText2 = "RA: 2651130";
-        x = getXforCenteredText(controlText2);
-        y = (int) (j.tileSize * 5.30);
-        g2.drawString(controlText2, x, y);
+            // IMPRIMINDO OS RA'S
+            g2.setColor(Color.WHITE);
+            g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 12));
+            String controlText1 = "RA: 2651378";
+            x = getXforCenteredText(controlText1);
+            y = (int) (j.tileSize * 4.30);
+            g2.drawString(controlText1, x, y);
 
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 12));
-        String controlText3 = "RA: 2651130";
-        x = getXforCenteredText(controlText3);
-        y = (int) (j.tileSize * 6.30);
-        g2.drawString(controlText3, x, y);
+            g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 12));
+            String controlText2 = "RA: 2651130";
+            x = getXforCenteredText(controlText2);
+            y = (int) (j.tileSize * 5.30);
+            g2.drawString(controlText2, x, y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 12));
+            String controlText3 = "RA: 2651130";
+            x = getXforCenteredText(controlText3);
+            y = (int) (j.tileSize * 6.30);
+            g2.drawString(controlText3, x, y);
 
         }
 
-        
     }
 
     public void drawPauseScreen() {
+<<<<<<< HEAD
         drawSubWindow(-100,-100, j.screenWidth+j.tileSize*2, j.screenHeight+j.tileSize*2);
         
         String text;
         int x;
+=======
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 50));
+        String text = "PAUSED";
+        int x = getXforCenteredText(text);
+
+>>>>>>> f1f1fc013af999f26e0e589145246cf2acc50225
         int y = j.screenHeight / 2;
 
         //g2.drawString(text, x, y);
@@ -380,7 +391,6 @@ public class UI {
     }
 
     public void drawDialogueScreen() {
-
         int x = j.tileSize * 2;
         int y = j.tileSize / 2;
         int width = j.screenWidth - j.tileSize * 4;
@@ -388,29 +398,28 @@ public class UI {
 
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 18));
         g2.setColor(Color.WHITE);
-        drawSubWindow(x,y,width,height);
+        drawSubWindow(x, y, width, height);
         x += j.tileSize;
         y += j.tileSize;
-        for(String line: currentDialogue.split("\n")){
+        for (String line : currentDialogue.split("\n")) {
             g2.drawString(line, x, y);
             y += j.tileSize / 2;
         }
 
     }
-    public void drawSubWindow(int x, int y, int width, int height) {
 
+    public void drawSubWindow(int x, int y, int width, int height) {
         Color c = new Color(0, 0, 0, 140);
         g2.setColor(c);
         g2.fillRoundRect(x, y, width, height, 45, 45);
         g2.setColor(Color.WHITE);
         g2.setStroke(new BasicStroke(4));
-        g2.drawRoundRect(x+4, y+4, width-8, height-8, 35, 35);
+        g2.drawRoundRect(x + 4, y + 4, width - 8, height - 8, 35, 35);
 
-    } 
+    }
 
-    public int getXforCenteredText(String text){
-
-        int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+    public int getXforCenteredText(String text) {
+        int length = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
         int x = j.screenWidth / 2 - length / 2;
         return x;
 
