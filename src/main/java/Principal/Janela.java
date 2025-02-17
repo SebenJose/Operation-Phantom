@@ -9,9 +9,9 @@ import javax.swing.JPanel;
 
 import Entidades.CobradeAluminio;
 import Entidades.DuroDuro;
-import Entidades.Tempestade;
 import Entidades.Entidade;
 import Entidades.Player;
+import Entidades.Tempestade;
 import Itens.Item;
 import Principal.RayCasting.DDARayCast;
 
@@ -32,7 +32,7 @@ public class Janela extends JPanel implements Runnable {
     // CONFIG MUNDO
     public final int maxWorldCol = 50;
     public final int maxWorldRow = 50;
-
+    
     public final int worldWidth = tileSize * maxWorldCol;
     public final int worldHeight = tileSize * maxWorldRow;
 
@@ -49,16 +49,18 @@ public class Janela extends JPanel implements Runnable {
     Thread gameThread;
 
     // ENTIDADE E OBJETO
-    public Player player[] = new Player[3];
+    public  Player  player[] = new Player[3];
     public Item item[] = new Item[10];
     public Entidade npc[] = new Entidade[10];
     public Entidade inimigo[] = new Entidade[10];
-    public int playerIndex = 2;
-
+    public int  playerIndex = 2;
+    
+    
+    
     // GAME STATE
     public int gameState;
     public final int titleState = 0;
-    public final int playState = 1;
+    public final int playState = 1;	
     public final int pauseState = 2;
     public final int dialogueState = 3;
     public int selectedCharacter = 0;
@@ -73,33 +75,35 @@ public class Janela extends JPanel implements Runnable {
         this.requestFocus();
         this.addKeyListener(keyH);
     }
-
+    
     public void setupGame() {
+        
         switch (selectedCharacter) {
             case 0:
-                player[0] = new CobradeAluminio(this, keyH);
-                playerIndex = 0;
-                break;
-
+            player[0] = new CobradeAluminio(this, keyH);
+            playerIndex = 0;
+            break;
+            
             case 1:
-                player[1] = new DuroDuro(this, keyH);
-                playerIndex = 1;
-                break;
-
+            player[1] = new DuroDuro(this, keyH);
+            playerIndex = 1;
+            break;
+            
             case 2:
-                player[2] = new Tempestade(this, keyH);
-                playerIndex = 2;
-                break;
+            player[2] = new Tempestade(this, keyH);
+            playerIndex = 2;
+            break;
         }
-
+        
         aSetter.setItem();
         aSetter.setNPC();
         aSetter.setInimigo();
         iniciarMsc(6);
         pararMsc(6);
         gameState = titleState;
+        
     }
-
+    
     @Override
     public void run() {
         double drawInterval = 1000000000 / FPS;
@@ -108,13 +112,13 @@ public class Janela extends JPanel implements Runnable {
         long currentTime;
         long timer = 0;
         int drawCount = 0;
-
+        
         // game loop
         while (gameThread != null) {
             currentTime = System.nanoTime();
-
+            
             delta += (currentTime - lastTime) / drawInterval;
-
+            
             timer += currentTime - lastTime;
 
             lastTime = currentTime;
@@ -125,7 +129,7 @@ public class Janela extends JPanel implements Runnable {
                 delta--;
                 drawCount++;
             }
-
+            
             if (timer >= 1000000000) {
                 System.out.println("FPS: " + drawCount);
                 drawCount = 0;
@@ -133,12 +137,12 @@ public class Janela extends JPanel implements Runnable {
             }
         }
     }
-
+    
     public void update() {
 
         Graphics2D g2d = (Graphics2D) getGraphics();
         if (gameState == playState) {
-            // PLAYER[playerIndex]
+            //  PLAYER[playerIndex]
             player[playerIndex].update();
             // NPC
             for (int i = 0; i < npc.length; i++) {
@@ -152,6 +156,7 @@ public class Janela extends JPanel implements Runnable {
                 }
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (gameState == pauseState) {
                 // pause
 =======
@@ -160,16 +165,23 @@ public class Janela extends JPanel implements Runnable {
                 // pause
             }
 >>>>>>> f1f1fc013af999f26e0e589145246cf2acc50225
+=======
+        
+        if (gameState == pauseState) {
+            // pause
+>>>>>>> 5cd022b9d00fb362005a3f37f2bc476d3a87ac3f
         }
+        
     }
+}
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
+        
         Graphics2D g2d = (Graphics2D) g;
-
-        // TELA DE LOBBY
+        
+        //TELA DE LOBBY
         if (gameState == titleState) {
             ui.draw(g2d);
         }
@@ -186,8 +198,9 @@ public class Janela extends JPanel implements Runnable {
                 item[i].draw(g2d, this);
 =======
 
-        // OUTROS
+        //OUTROS
         else {
+<<<<<<< HEAD
             // TILE
             tm.draw(g2d);
 
@@ -196,10 +209,20 @@ public class Janela extends JPanel implements Runnable {
                 if (item[i] != null) {
                     item[i].draw(g2d, this);
 >>>>>>> f1f1fc013af999f26e0e589145246cf2acc50225
+=======
+             // TILE
+           tm.draw(g2d);
+        
+              // ITEM
+            for(int i = 0; i<item.length; i++){
+                if(item[i] != null){
+                item[i].draw(g2d, this);
+>>>>>>> 5cd022b9d00fb362005a3f37f2bc476d3a87ac3f
                 }
             }
 
             // NPC
+<<<<<<< HEAD
 <<<<<<< HEAD
             for(int i = 0; i < npc.length; i++){
                 if(npc[i] != null){
@@ -224,18 +247,34 @@ public class Janela extends JPanel implements Runnable {
                     // rc.rayCast(inimigo[i], g2d);
                 }
 >>>>>>> f1f1fc013af999f26e0e589145246cf2acc50225
+=======
+            for(int i = 0; i < npc.length; i++){
+                if(npc[i] != null){
+                npc[i].draw(g2d);
+                }
             }
 
-            // PLAYER[playerIndex]
-            player[playerIndex].draw(g2d);
-
-            // dl.ddaLine(player[playerIndex].worldX, player[playerIndex].worldY,
-            // inimigo[0].worldX, inimigo[0].worldY, g2d);
+            for(int i = 0; i < inimigo.length; i++){
+                if(inimigo[i] != null){
+                inimigo[i].draw(g2d);
+                //rc.rayCast(inimigo[i], g2d);
+>>>>>>> 5cd022b9d00fb362005a3f37f2bc476d3a87ac3f
+            }
+        }
+        
+        
+        //  PLAYER[playerIndex]
+        player[playerIndex].draw(g2d);
+        
+        //dl.ddaLine(player[playerIndex].worldX, player[playerIndex].worldY, inimigo[0].worldX, inimigo[0].worldY, g2d);
 
             ui.draw(g2d);
 
             g2d.dispose();
+
         }
+
+       
     }
 
     public void iniciarMsc(int i) {
@@ -243,7 +282,6 @@ public class Janela extends JPanel implements Runnable {
         msc.play();
         msc.loop();
     }
-
     public void pararMsc(int i) {
         msc.stop();
     }
