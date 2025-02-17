@@ -35,8 +35,16 @@ public class UI {
     DecimalFormat dFormat = new DecimalFormat("#0.00");
     public String  currentDialogue = "";
     public int comandNum = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
     public int titleScreenState = 0; 
     public int pauseCounter = 0;
+=======
+    public int titleScreenState = 0;
+>>>>>>> f1f1fc013af999f26e0e589145246cf2acc50225
+=======
+    public int titleScreenState = 0; 
+>>>>>>> 5cd022b9d00fb362005a3f37f2bc476d3a87ac3f
 
     public UI(Janela j) {
         this.j = j;
@@ -74,7 +82,14 @@ public class UI {
         vida_1 = vida.image5;
         vida_1_dano = vida.image6;
         vida_vazia = vida.image7;
+<<<<<<< HEAD
+<<<<<<< HEAD
         vida_ = vida.image8;
+=======
+>>>>>>> f1f1fc013af999f26e0e589145246cf2acc50225
+=======
+    
+>>>>>>> 5cd022b9d00fb362005a3f37f2bc476d3a87ac3f
 
     }
 
@@ -176,12 +191,24 @@ public class UI {
 
     public void drawVidaPlayer(){
 
+<<<<<<< HEAD
+<<<<<<< HEAD
         int x = j.tileSize/2;
         int y = j.tileSize/2;
         int i = 0;
         
         g2.drawImage(vida_, x, y, j.tileSize, j.tileSize, null);
         if(j.player[j.playerIndex].life == j.player[j.playerIndex].maxLife){
+=======
+        if (j.player[j.playerIndex].life == j.player[j.playerIndex].maxLife) {
+>>>>>>> f1f1fc013af999f26e0e589145246cf2acc50225
+=======
+        int x = j.tileSize/2;
+        int y = j.tileSize/2;
+        int i = 0;
+
+        if(j.player[j.playerIndex].life == j.player[j.playerIndex].maxLife){
+>>>>>>> 5cd022b9d00fb362005a3f37f2bc476d3a87ac3f
             g2.drawImage(vida_cheia, x, y, j.tileSize, j.tileSize, null);
         }
         else if(j.player[j.playerIndex].life == 2){
@@ -349,10 +376,21 @@ public class UI {
     }
 
     public void drawPauseScreen() {
+<<<<<<< HEAD
+<<<<<<< HEAD
         drawSubWindow(-100,-100, j.screenWidth+j.tileSize*2, j.screenHeight+j.tileSize*2);
         
         String text;
         int x;
+=======
+=======
+
+>>>>>>> 5cd022b9d00fb362005a3f37f2bc476d3a87ac3f
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 50));
+        String text = "PAUSED";
+        int x = getXforCenteredText(text);
+
+>>>>>>> f1f1fc013af999f26e0e589145246cf2acc50225
         int y = j.screenHeight / 2;
 
         //g2.drawString(text, x, y);

@@ -25,20 +25,39 @@ public class KeyHandler implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
+<<<<<<< HEAD
+
+<<<<<<< HEAD
+            if(j.ui.titleScreenState == 0){
+                
+                if (code == KeyEvent.VK_W ||  code == KeyEvent.VK_UP) {
+=======
+=======
     
+>>>>>>> 5cd022b9d00fb362005a3f37f2bc476d3a87ac3f
         // MENU
         if(j.gameState == j.titleState){
 
             if(j.ui.titleScreenState == 0){
                 
-                if (code == KeyEvent.VK_W ||  code == KeyEvent.VK_UP) {
+                if (code == KeyEvent.VK_W) {
+>>>>>>> f1f1fc013af999f26e0e589145246cf2acc50225
                     j.ui.comandNum--;
                     if(j.ui.comandNum < 0){
                         j.ui.comandNum = 2;
                     }
                 }
+<<<<<<< HEAD
+<<<<<<< HEAD
     
                 if (code == KeyEvent.VK_S ||   code == KeyEvent.VK_DOWN) {
+=======
+
+=======
+    
+>>>>>>> 5cd022b9d00fb362005a3f37f2bc476d3a87ac3f
+                if (code == KeyEvent.VK_S) {
+>>>>>>> f1f1fc013af999f26e0e589145246cf2acc50225
                     j.ui.comandNum++;
                     if(j.ui.comandNum > 2){
                         j.ui.comandNum = 0;
@@ -56,17 +75,40 @@ public class KeyHandler implements KeyListener {
                     else if(j.ui.comandNum == 2){ //sai, assim eu espero.
                         System.exit(0);
                     }
+<<<<<<< HEAD
+<<<<<<< HEAD
                 }  
             }else if (j.ui.titleScreenState == 1){ //SELECIONAR PERSONAGEM
                 
                     if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP) {
+=======
+                }
+            } else if (j.ui.titleScreenState == 1) { // SELECIONAR PERSONAGEM
+
+                if (code == KeyEvent.VK_W) {
+>>>>>>> f1f1fc013af999f26e0e589145246cf2acc50225
+=======
+                }  
+            }else if (j.ui.titleScreenState == 1){ //SELECIONAR PERSONAGEM
+                
+                    if (code == KeyEvent.VK_W) {
+>>>>>>> 5cd022b9d00fb362005a3f37f2bc476d3a87ac3f
                     j.ui.comandNum--;
                     if(j.ui.comandNum < 0){
                         j.ui.comandNum = 3;
                     }
                 }
+<<<<<<< HEAD
+<<<<<<< HEAD
     
                 if (code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN) {
+=======
+
+=======
+    
+>>>>>>> 5cd022b9d00fb362005a3f37f2bc476d3a87ac3f
+                if (code == KeyEvent.VK_S) {
+>>>>>>> f1f1fc013af999f26e0e589145246cf2acc50225
                     j.ui.comandNum++;
                     if(j.ui.comandNum > 3){
                         j.ui.comandNum = 0;
@@ -108,9 +150,19 @@ public class KeyHandler implements KeyListener {
         }
     }
         // Play State
+<<<<<<< HEAD
+<<<<<<< HEAD
         else if(j.gameState == j.playState){
 
             if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP) {
+=======
+        else if (j.gameState == j.playState) {
+=======
+        else if(j.gameState == j.playState){
+
+>>>>>>> 5cd022b9d00fb362005a3f37f2bc476d3a87ac3f
+            if (code == KeyEvent.VK_W) {
+>>>>>>> f1f1fc013af999f26e0e589145246cf2acc50225
                 upPressed = true;
             }
 
@@ -138,6 +190,8 @@ public class KeyHandler implements KeyListener {
     }   
         // Pause State
         else if (j.gameState == j.pauseState) {
+<<<<<<< HEAD
+<<<<<<< HEAD
             if (code == KeyEvent.VK_ESCAPE) 
                 j.gameState = j.playState; 
          
@@ -170,6 +224,16 @@ public class KeyHandler implements KeyListener {
         }
         }
     
+=======
+            if (code == KeyEvent.VK_ESCAPE)
+                j.gameState = j.playState;
+        }
+>>>>>>> f1f1fc013af999f26e0e589145246cf2acc50225
+=======
+            if (code == KeyEvent.VK_ESCAPE) 
+                j.gameState = j.playState; 
+         }
+>>>>>>> 5cd022b9d00fb362005a3f37f2bc476d3a87ac3f
 
         // Dialogue State
         else if (j.gameState == j.dialogueState){

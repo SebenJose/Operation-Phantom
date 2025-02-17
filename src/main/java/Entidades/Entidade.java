@@ -49,7 +49,7 @@ public class Entidade {
     public Entidade(Janela j) {
         this.j = j;
     }
-    
+
     public void speak(){ 
         if(dialogue[dialogueIndex] == null){
             dialogueIndex = 0;
@@ -79,7 +79,12 @@ public class Entidade {
     public void setAction() { }
     public void update(){
 
-        currentTile = j.tm.mapTileNum[currentTileY][currentTileX];
+<<<<<<< HEAD
+    public void setAction() {
+    }
+
+=======
+>>>>>>> 5cd022b9d00fb362005a3f37f2bc476d3a87ac3f
         setAction();
 
         collisionOn = false;

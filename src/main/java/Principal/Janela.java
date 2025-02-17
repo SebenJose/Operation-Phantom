@@ -155,8 +155,21 @@ public class Janela extends JPanel implements Runnable {
                     inimigo[i].update();
                 }
             }
+<<<<<<< HEAD
+<<<<<<< HEAD
             if (gameState == pauseState) {
                 // pause
+=======
+
+            if (gameState == pauseState) {
+                // pause
+            }
+>>>>>>> f1f1fc013af999f26e0e589145246cf2acc50225
+=======
+        
+        if (gameState == pauseState) {
+            // pause
+>>>>>>> 5cd022b9d00fb362005a3f37f2bc476d3a87ac3f
         }
         
     }
@@ -172,6 +185,7 @@ public class Janela extends JPanel implements Runnable {
         if (gameState == titleState) {
             ui.draw(g2d);
         }
+<<<<<<< HEAD
         
         //OUTROS
         else {
@@ -182,10 +196,34 @@ public class Janela extends JPanel implements Runnable {
             for(int i = 0; i<item.length; i++){
                 if(item[i] != null){
                 item[i].draw(g2d, this);
+=======
+
+        //OUTROS
+        else {
+<<<<<<< HEAD
+            // TILE
+            tm.draw(g2d);
+
+            // ITEM
+            for (int i = 0; i < item.length; i++) {
+                if (item[i] != null) {
+                    item[i].draw(g2d, this);
+>>>>>>> f1f1fc013af999f26e0e589145246cf2acc50225
+=======
+             // TILE
+           tm.draw(g2d);
+        
+              // ITEM
+            for(int i = 0; i<item.length; i++){
+                if(item[i] != null){
+                item[i].draw(g2d, this);
+>>>>>>> 5cd022b9d00fb362005a3f37f2bc476d3a87ac3f
                 }
             }
 
             // NPC
+<<<<<<< HEAD
+<<<<<<< HEAD
             for(int i = 0; i < npc.length; i++){
                 if(npc[i] != null){
                     npc[i].draw(g2d);
@@ -196,6 +234,31 @@ public class Janela extends JPanel implements Runnable {
             for(int i = 0; i < inimigo.length; i++){
                 if(inimigo[i] != null){
                     inimigo[i].draw(g2d);
+=======
+            for (int i = 0; i < npc.length; i++) {
+                if (npc[i] != null) {
+                    npc[i].draw(g2d);
+                }
+            }
+
+            for (int i = 0; i < inimigo.length; i++) {
+                if (inimigo[i] != null) {
+                    inimigo[i].draw(g2d);
+                    // rc.rayCast(inimigo[i], g2d);
+                }
+>>>>>>> f1f1fc013af999f26e0e589145246cf2acc50225
+=======
+            for(int i = 0; i < npc.length; i++){
+                if(npc[i] != null){
+                npc[i].draw(g2d);
+                }
+            }
+
+            for(int i = 0; i < inimigo.length; i++){
+                if(inimigo[i] != null){
+                inimigo[i].draw(g2d);
+                //rc.rayCast(inimigo[i], g2d);
+>>>>>>> 5cd022b9d00fb362005a3f37f2bc476d3a87ac3f
             }
         }
         

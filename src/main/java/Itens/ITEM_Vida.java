@@ -18,7 +18,10 @@ public class ITEM_Vida extends Item {
         image5 = setup("/Principal/UIsrc/BarraVida/UI_um_de_vida", j.tileSize, j.tileSize);
         image6 = setup("/Principal/UIsrc/BarraVida/UI_um_de_vida_dano", j.tileSize, j.tileSize);
         image7 = setup("/Principal/UIsrc/BarraVida/UI_vida_vazia", j.tileSize, j.tileSize);
+<<<<<<< HEAD
         image8 = setup("/Principal/UIsrc/BarraVida/UI_vida_", j.tileSize, j.tileSize);
+=======
+>>>>>>> 5cd022b9d00fb362005a3f37f2bc476d3a87ac3f
 
     }
 
