@@ -18,7 +18,7 @@ public class Entidade {
     public int worldX, worldY;
     public String direction;
     public int spriteNum = 1;
-    public Rectangle solidArea = new Rectangle(0,0,64,64);
+    public Rectangle solidArea = new Rectangle(0,0,32,32);
     public Rectangle attackArea = new Rectangle(0,0,64,64);
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = true;
@@ -26,8 +26,8 @@ public class Entidade {
     public String[] dialogue = new String[20]; 
     public int dialogueIndex = 0;
     boolean attacking = false;
-    public int currentTileX = worldX / 100;
-    public int currentTileY = worldY / 100;
+    public int currentTileX = worldX / 64;
+    public int currentTileY = worldY / 64;
     public int currentTile;
 
     // SPRITES IMAGES
@@ -79,12 +79,6 @@ public class Entidade {
     public void setAction() { }
     public void update(){
 
-<<<<<<< HEAD
-    public void setAction() {
-    }
-
-=======
->>>>>>> 5cd022b9d00fb362005a3f37f2bc476d3a87ac3f
         setAction();
 
         collisionOn = false;

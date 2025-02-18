@@ -15,7 +15,7 @@ public class INI_sold_cacetete extends Entidade {
 
         type = 2;
         nome = "soldado de cacetete";
-        speed = 3;
+        speed = 2;
         maxLife = 2;
         life = maxLife;
         direction = "down";

@@ -2,6 +2,7 @@ package Principal;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.SystemTray;
 import static java.lang.Math.sqrt;
 
 import Entidades.Entidade;
@@ -65,8 +66,9 @@ public class DDARayCast {
                 rayLength1D[1] += rayUnitStepSize[1];
             }
             if(mapCheckX >= 0 && mapCheckX < j.worldWidth && mapCheckY >= 0 && mapCheckY < j.worldHeight){
+                if(j.tm.tile[tm.mapTileNum[mapCheckX][mapCheckY]].collision){
                 System.out.println("Tile Found");
-                tileFound = true;
+                tileFound = true;}
         }
 
         }
