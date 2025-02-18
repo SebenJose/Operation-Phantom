@@ -171,6 +171,9 @@ public class UI {
             drawVidaPlayer();
             drawDialogueScreen();
         }
+        if(j.gameState == j.gameOverState){
+            drawGameOverScreen();
+        }
 
     }
 
@@ -250,7 +253,7 @@ public class UI {
             int y = j.tileSize * 2;
             g2.drawString(text, x, y);
 
-            text = "OSVALDO PAI";
+            text = "COBRA DE ALUMINIO";
             x = getXforCenteredText(text);
             y = j.tileSize * 4;
             g2.drawString(text, x, y);
@@ -258,7 +261,7 @@ public class UI {
                 g2.drawString(">", x-j.tileSize, y);
             }
 
-            text = "OSVALDO JR";
+            text = "DURO DURO";
             x = getXforCenteredText(text);
             y = j.tileSize * 5;
             g2.drawString(text, x, y);
@@ -266,7 +269,7 @@ public class UI {
                 g2.drawString(">", x-j.tileSize, y);
             }
 
-            text = "OSVALDO VALDO";
+            text = "TEMPESTADE";
             x = getXforCenteredText(text);
             y = j.tileSize * 6;
             g2.drawString(text, x, y);
@@ -382,6 +385,35 @@ public class UI {
     
 
 
+    }
+
+    public void drawGameOverScreen (){
+
+        g2.setColor(new Color(0, 0, 0, 150));
+        g2.fillRect(0, 0, j.screenWidth, j.screenHeight);
+
+        int x;
+        int y;
+        String text;
+        g2.setFont(g2.getFont () .deriveFont(Font.BOLD, 120));
+
+        text = "Game Over";
+        g2.setColor(Color.BLACK);
+        x = getXforCenteredText(text);
+        y = j.tileSize * 4;
+        g2.drawString(text, x, y);
+
+        g2.setColor(Color.WHITE);
+        g2.drawString(text, x-4, y-4);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 36));
+        String textOver = "Quit";
+        x = getXforCenteredText(textOver);
+        y = j.tileSize * 6;
+        g2.drawString(textOver, x, y);
+            if(comandNum == 0) {
+                g2.drawString(">", x-j.tileSize, y);
+            }
     }
 
     public void drawDialogueScreen() {
