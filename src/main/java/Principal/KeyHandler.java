@@ -138,6 +138,12 @@ public class KeyHandler implements KeyListener {
                 
         }
     }   
+        if(j.gameState == j.gameOverState){
+            if(code == KeyEvent.VK_ENTER){
+                j.gameState = j.titleState;
+                j.ui.titleScreenState = 0;
+            }
+        }
         // Pause State
         else if (j.gameState == j.pauseState) {
             if (code == KeyEvent.VK_ESCAPE) 
@@ -182,6 +188,8 @@ public class KeyHandler implements KeyListener {
                 j.gameState = j.playState;
             }
          }
+
+        
         
     
         }
