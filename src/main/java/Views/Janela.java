@@ -72,6 +72,7 @@ public class Janela extends JPanel implements Runnable {
     public final int dialogueState = 3;
     public int selectedCharacter = 0;
     public final int creditState = 4;
+    public final int gameOverState = 5;
 
     // construtor
     public Janela() {
@@ -151,6 +152,9 @@ public class Janela extends JPanel implements Runnable {
         if (gameState == playState) {
             //  PLAYER[playerIndex]
             player[playerIndex].update();
+            if (player[playerIndex].life <= 0) {
+                gameState = gameOverState;
+            }
             // NPC
             for (int i = 0; i < npc.length; i++) {
                 if (npc[i] != null) {
