@@ -13,6 +13,8 @@ public final class TileManager {
     public Tiles tile[];
     Janela j;
     public int mapTileNum[][];
+    public String mapa1 = "/Views/Mapas/armazem.txt";
+    
 
     public TileManager(Janela j) {
         this.j = j;
@@ -20,8 +22,10 @@ public final class TileManager {
         tile = new Tiles[30];
         mapTileNum = new int[j.maxWorldRow][j.maxWorldCol];
 
-        loadMap("/Views/Mapas/test_map.txt");
+        loadMap(mapa1);
+        
         getTileImage();
+        
     }
 
     public void getTileImage() {
@@ -36,9 +40,10 @@ public final class TileManager {
         setup(7, "parede/metal/tile_canto_sup_esq", true);
         setup(8, "parede/metal/tile_lateral", true);
         setup(9, "parede/metal/tile_vertical", true);
-        setup(10, "misc/tile_box", false);
+        setup(10, "misc/tile_box", true);
         setup(11, "misc/tile_box2", false);
         setup(12, "Maquina_refri", true);
+        setup(13, "misc/grama_grid", true);
         
         
     }

@@ -12,7 +12,7 @@ import Views.Janela;
  */
 public class KeyHandler implements KeyListener {
 
-    public boolean upPressed, downPressed, leftPressed, rightPressed, escPressed, ePressed, enterPressed, shotPressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, escPressed, ePressed, enterPressed;
     Janela j;
 
 
@@ -134,12 +134,10 @@ public class KeyHandler implements KeyListener {
             }
             if (code == KeyEvent.VK_ENTER) {
                 enterPressed = true; 
-                if(j.player[j.playerIndex].hasArma == 1){
-                    shotPressed = true;
-                }
+
             }
             if (code == KeyEvent.VK_ESCAPE) {
-                    j.gameState = j.pauseState; 
+                j.gameState = j.pauseState; 
                 
         }
     }   
@@ -222,6 +220,7 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_E) {
             ePressed = false;
         }
+        
         
 }
 

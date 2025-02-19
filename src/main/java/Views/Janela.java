@@ -60,7 +60,7 @@ public class Janela extends JPanel implements Runnable {
     public Entidade npc[] = new Entidade[10];
     public Entidade inimigo[] = new Entidade[10];
     public Projetil proj[] = new Projetil[30];
-    public int  playerIndex = 2;
+    public int  playerIndex = 0;
     
     
     
@@ -147,7 +147,9 @@ public class Janela extends JPanel implements Runnable {
     }
     
     public void update() {
-
+        if(player[playerIndex].hasCafe==1){
+            tm.loadMap("/Mapas/map3.txt");
+        }
         Graphics2D g2d = (Graphics2D) getGraphics();
         if (gameState == playState) {
             //  PLAYER[playerIndex]
@@ -232,8 +234,6 @@ public class Janela extends JPanel implements Runnable {
             for (int i = 0; i < proj.length; i++) {
                 if (proj[i] != null) {
                     proj[i].draw(g2d);
-                    
-                    
                 }
             }
             

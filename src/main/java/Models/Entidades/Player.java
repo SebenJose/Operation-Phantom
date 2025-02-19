@@ -17,10 +17,10 @@ public class Player extends Entidade {
     public final int screenX;
     public final int screenY;
     public int hasPeDeCabra = 0;
-    public int hasArma = 1 ;
+    public int hasArma = 0 ;
     public boolean peDeCabraEquipped = false;
     public boolean armaEquipped = false;
-
+    public int hasCafe = 0;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public Player(Janela j, KeyHandler keyH) {
@@ -36,8 +36,8 @@ public class Player extends Entidade {
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
         
-        attackArea.width = 36;
-        attackArea.height = 36;
+        attackArea.width = 48;
+        attackArea.height = 48;
 
         setDefaultValues();
         getPlayerImage();
@@ -79,22 +79,14 @@ public class Player extends Entidade {
     }
     public void getPlayerAttackImage(){
 
-        // attackUp1 = setup("/Sprites/Player/snake/attack/snake_up_attack_1",j.tileSize, j.tileSize);
-        // attackUp2 = setup("/Sprites/Player/snake/attack/snake_up_attack_2",j.tileSize, j.tileSize);
-        // attackDown1 = setup("/Sprites/Player/snake/attack/snake_down_attack_1,j.tileSize, j.tileSize",j.tileSize, j.tileSize);
-        // attackDown2 = setup("/Sprites/Player/snake/attack/snake_down_attack_2,j.tileSize, j.tileSize",j.tileSize, j.tileSize);
-        // attackLeft1 = setup("/Sprites/Player/snake/attack/snake_left_attack_1,j.tileSize, j.tileSize",j.tileSize, j.tileSize);
-        // attackLeft2 = setup("/Sprites/Player/snake/attack/snake_left_attack_2,j.tileSize, j.tileSize",j.tileSize, j.tileSize);
-        // attackRight1 = setup("/Sprites/Player/snake/attack/snake_right_attack_,j.tileSize, j.tileSize1",j.tileSize, j.tileSize);
-        // attackRight2 = setup("/Sprites/Player/snake/attack/snake_right_attack_,j.tileSize, j.tileSize2",j.tileSize, j.tileSize);
 
 
     }
 
     @Override
     public void update() {
-        
-        
+                
+
         if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true
         || keyH.rightPressed == true || keyH.ePressed == true || keyH.enterPressed == true) {
             
@@ -125,11 +117,12 @@ public class Player extends Entidade {
             
             
             if(j.keyH.enterPressed == true){
-                if(hasArma ==1){
-                proj.set(worldX, worldY, direction, true, this);
-                for(int i = 0; i<j.proj.length; i++){
-                    if(j.proj[i] == null){
-                        j.proj[i] = new PRJ_Tiro(j);
+                if(armaEquipped){
+                    for(int i = 0; i<j.proj.length; i++){
+                        if(j.proj[i] == null){
+                            proj.set(worldX, worldY, direction, true, this);
+                            j.proj[i] = proj;
+                            System.out.println("pewpewpew");
                         break;
                     }
                 }
@@ -137,9 +130,11 @@ public class Player extends Entidade {
                 attacking = true;
                 j.keyH.enterPressed= false;
             }
-            if(attacking == true){
+            if(attacking == true && armaEquipped == false){
                 attacking();
             }
+
+
             int inimigoIndex = j.cChecker.checkEntidade(this, j.inimigo);
             interactINI(inimigoIndex);
             
@@ -190,7 +185,6 @@ public class Player extends Entidade {
     public void attacking(){
 
         spriteCounter++;
-
         if(spriteCounter <= 5){
             spriteNum = 1;
         }
@@ -221,7 +215,6 @@ public class Player extends Entidade {
         if(spriteCounter > 25){
             spriteNum = 1;
             spriteCounter = 0;
-            attacking = false;
         }
 
     }
@@ -232,12 +225,16 @@ public class Player extends Entidade {
 
             switch (itemName) {
                 case "Pe de Cabra":
-                    if(keyH.ePressed == true){
+                    if(keyH.ePressed == true && j.playerIndex != 2){
             
                         hasPeDeCabra++;
                         if (hasPeDeCabra > 1) {
                             j.ui.showMessage("Pe de Cabra já foi Adquirido!");
                             hasPeDeCabra = 1;
+                            peDeCabraEquipped = true;
+                            if(armaEquipped == true){
+                                armaEquipped = false;
+                            }
                             break;
                         }
                         j.item[i] = null;
@@ -249,12 +246,13 @@ public class Player extends Entidade {
 
                         break;
                     }
+                    else{
+                        j.ui.showMessage("Tempestade: Eu não preciso de nada além da minha lâmina!");
+                        break;
+                    }
                 case "Café":
                     if(keyH.ePressed == true){
-
-                        j.ui.showMessage("Bebeu café e recuperou 1 de vida!");
-                        
-                        
+                        hasCafe++;
                         
                         if (life < maxLife){
                             j.item[i] = null;
@@ -266,6 +264,32 @@ public class Player extends Entidade {
 
                     }
                     break;
+                // case "M16":
+                //     if(keyH.ePressed == true && j.playerIndex != 2){
+            
+                //         hasArma++;
+                //         if (hasArma > 1) {
+                //             j.ui.showMessage("M16 já foi Adquirida!");
+                //             hasArma = 1;
+                //             armaEquipped = true;
+                //             if(peDeCabraEquipped == true){
+                //                 peDeCabraEquipped = false;
+                //             }
+                //         break;
+                //     }
+                //     j.item[i] = null;
+
+                //     // audio
+                //     j.playSE(1);
+
+                //     j.ui.showMessage("M16 AdquiridA!");
+
+                //     break;
+                // }
+                // else if (keyH.ePressed == true && j.playerIndex == 2){
+                //     j.ui.showMessage("Tempestade: Eu não preciso de nada além da minha lâmina!");
+                // }
+
             }
         }
 
@@ -280,9 +304,9 @@ public class Player extends Entidade {
             }
         }
         else{
-            if(j.keyH.enterPressed == true){
+            if(keyH.enterPressed == true){
                 attacking = true;
-            }
+            }   
         }
     }
 
@@ -297,6 +321,14 @@ public class Player extends Entidade {
                         j.inimigo[i].attacking = true;
                     }
                     break;
+                case "soldado de fuzil":
+                    
+                        if (invicible == false) {
+                            life -= 1;
+                            invicible = true;
+                            j.inimigo[i].attacking = true;
+                        }
+                        break;
                 default:
                     throw new AssertionError();
             }
@@ -324,6 +356,7 @@ public class Player extends Entidade {
             getPlayerImage();
             peDeCabraEquipped = true;
         }
+        getPlayerAttackImage();
         switch (direction) {
             case "up":
                 if(attacking == false){ 

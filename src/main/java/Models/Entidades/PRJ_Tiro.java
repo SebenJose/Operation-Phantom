@@ -17,9 +17,18 @@ public class PRJ_Tiro extends Projetil{
         life = maxLife;
         attack = 1;
         alive = false;
+
+        getImage();
     }
     public void getImage(){
-        image = setup("/Sprites/Projetil", 64, 64);
+        up1 = setup("/Sprites/projetil/Projetil_1", 64, 64);
+        up2 = setup("/Sprites/projetil/Projetil_1", 64, 64);
+        down1 = setup("/Sprites/projetil/Projetil_1", 64, 64);
+        down2 = setup("/Sprites/projetil/Projetil_1", 64, 64);
+        left1 = setup("/Sprites/projetil/Projetil_1", 64, 64);
+        left2 = setup("/Sprites/projetil/Projetil_1", 64, 64);
+        right1 = setup("/Sprites/projetil/Projetil_1", 64, 64);
+        right2 = setup("/Sprites/projetil/Projetil_1", 64, 64);
     }
     
 

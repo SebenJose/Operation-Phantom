@@ -14,6 +14,7 @@ import java.text.DecimalFormat;
 
 import javax.imageio.ImageIO;
 
+import Models.Itens.ITEM_Arma;
 import Models.Itens.ITEM_PeDeCabra;
 import Models.Itens.ITEM_Vida;
 import Models.Itens.Item;
@@ -26,7 +27,7 @@ public class UI {
     Janela j;
     Graphics2D g2;
     Font retroGaming;
-    BufferedImage peDeCabraImage,vida_, vida_cheia, vida_cheia_dano, vida_2, vida_2_dano, vida_1, vida_1_dano, vida_vazia;
+    BufferedImage armaImage, peDeCabraImage,vida_, vida_cheia, vida_cheia_dano, vida_2, vida_2_dano, vida_1, vida_1_dano, vida_vazia;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -53,6 +54,9 @@ public class UI {
 
         ITEM_PeDeCabra peDeCabra = new ITEM_PeDeCabra(j);
         peDeCabraImage = peDeCabra.image;
+
+        ITEM_Arma arma = new ITEM_Arma(j);
+        armaImage = arma.image;
 
         try {
             backgroundTitleImage = ImageIO.read(new File("src/main/java/Assets/UISrc/TelasTitle/novanovaTelaPrincipal.png"));
@@ -112,18 +116,14 @@ public class UI {
 
             } else {
 
-                if (j.player[j.playerIndex].hasPeDeCabra >= 1) {
+                if (j.player[j.playerIndex].peDeCabraEquipped) {
                     g2.drawImage(peDeCabraImage, j.tileSize*15, j.tileSize*8, j.tileSize, j.tileSize, null);
                 }
+                if (j.player[j.playerIndex].armaEquipped) {
+                    g2.drawImage(armaImage, j.tileSize*15, j.tileSize*8, j.tileSize, j.tileSize, null);
+                }
 
-                g2.setFont(g2.getFont().deriveFont(Font.BOLD, 14));
-                g2.setColor(Color.WHITE);
-                g2.drawString("Especial", j.tileSize / 2, 540);
-
-                g2.setFont(g2.getFont().deriveFont(Font.BOLD, 13));
-                g2.setColor(Color.WHITE);
-                g2.drawString("Caixa", j.tileSize * 2, 540);
-
+               
                 // TIME
                 g2.setFont(g2.getFont().deriveFont(Font.ITALIC, 20));
                 playTime += (double) 1 / 60;

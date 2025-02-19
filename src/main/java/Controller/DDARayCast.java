@@ -14,7 +14,8 @@ public class DDARayCast {
     public TileManager tm;
     public Janela j;
     public Rectangle ray;
-
+    public boolean tileFound;
+    
     public DDARayCast(Janela j) {
         this.j = j;
     }
@@ -22,7 +23,7 @@ public class DDARayCast {
     public void rayCast(Entidade entidade, Graphics2D g2) {
         g2.setColor(Color.PINK);
         // g2.drawLine(entidade.worldX, entidade.worldY, j.player[j.playerIndex].worldX, j.player[j.playerIndex].worldY);
-
+        
         double rayStartX = j.player[j.playerIndex].worldX;
         double rayStartY = j.player[j.playerIndex].worldY;
         double rayEndX = entidade.worldX - j.player[j.playerIndex].worldX;
@@ -52,7 +53,7 @@ public class DDARayCast {
             rayLength1D[1] = ((mapCheckY + 1) * j.tileSize - rayStartY) * rayUnitStepSize[1];
         }
 
-        boolean tileFound = false;
+        tileFound = false;
         double maxDistance = 5;
         double distance = 0;
         while (!tileFound && distance < maxDistance) {

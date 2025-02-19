@@ -1,17 +1,28 @@
 
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import javax.swing.JFrame;
 
+import DAO.ConexaoJDBC;
 import Views.Janela;
+import Views.UI;
 
 public class OpPhantom {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        // SQL
+        Connection conn = ConexaoJDBC.getConexao();
+
+        // Janela do jogo
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.setTitle("Operation Phantom");
+        frame.setTitle("opPhantom");
 
-        Janela j = new Janela();
-        frame.add(j);
+        Janela janela = new Janela();
+        frame.add(janela);
 
         frame.pack();
 
@@ -21,7 +32,15 @@ public class OpPhantom {
         // frame.setUndecorated(true); // Remove bordas da janela
         frame.setVisible(true);
 
-        j.setupGame();
-        j.iniciarGameThread();
+        janela.setupGame();
+        janela.iniciarGameThread();
+
+        // MYSQL
+        UI ui = new UI(janela);
+        double tempo = ui.playTime;
+        Statement stmt = conn.createStatement();
+        stmt.executeQuery("INSERT INTO tempoJogo VALUES (" + tempo + ");");
+
+        conn.close();
     }
 }
