@@ -17,8 +17,8 @@ se sente mais confortável para estar jogando e passando seu tempo de lazer, sem
 de conexão com a internet ou coisa do tipo, apenas tendo seu computador em mãos poderá
 disfrutar da experiência do jogo. Desenvolvido exclusivamente para rodar em Windows.
 Mecânicas de gameplay:
-● Escolha de personagem.
-● Combate furtivo ou não.
-● Itens utilizáveis durante o jogo
-● Sistema de NPCs interativos.
-● Sistema de inimigos.
+- Escolha de personagem.
+- Combate furtivo ou não.
+- Itens utilizáveis durante o jogo
+- Sistema de NPCs interativos.
+- Sistema de inimigos.
